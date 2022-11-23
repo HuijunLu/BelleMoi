@@ -1,45 +1,34 @@
-import Directory from './components/directory/directory.component.jsx'
-import "./App.css";
+import {Routes, Route, Outlet} from "react-router-dom";
+import Home from './routes/home/home.component.jsx';
+
 
 const App = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "Earrings",
-      image:
-        "https://res.cloudinary.com/mejuri-com/image/upload/f_auto,c_limit,w_1200,q_auto/q_auto/v1666906058/PLP/Category%20Assets/Categories%20and%20Subcategories%20Oct%202022/Category/Earrings.jpg",
-    },
-    {
-      id: 2,
-      title: "Rings",
-      image:
-        "https://res.cloudinary.com/mejuri-com/image/upload/f_auto,c_limit,w_1080,q_auto/q_auto/v1666906058/PLP/Category%20Assets/Categories%20and%20Subcategories%20Oct%202022/Category/Rings.jpg",
-    },
-    {
-      id: 3,
-      title: "Necklaces",
-      image:
-        "https://res.cloudinary.com/mejuri-com/image/upload/f_auto,c_limit,w_1080,q_auto/q_auto/v1666906058/PLP/Category%20Assets/Categories%20and%20Subcategories%20Oct%202022/Category/Necklaces.jpg",
-    },
-    {
-      id: 4,
-      title: "Bracelets",
-      image:
-        "https://res.cloudinary.com/mejuri-com/image/upload/f_auto,c_limit,w_1080,q_auto/q_auto/v1666906058/PLP/Category%20Assets/Categories%20and%20Subcategories%20Oct%202022/Category/Bracelets_and_Anklets.jpg",
-    },
-    {
-      id: 5,
-      title: "Wedding",
-      image:
-        "https://res.cloudinary.com/mejuri-com/image/upload/f_auto,c_limit,w_1080,q_auto/q_auto/v1666906058/PLP/Category%20Assets/Categories%20and%20Subcategories%20Oct%202022/Category/Wedding.jpg",
-    }
-  ];
+  // An <Outlet> should be used in parent route elements to render
+  // their child route elements. 
+  const Navbar = () => {
+    return(
+      <div>
+        <h1>This is navbar</h1>
+        <Outlet />
+      </div>
+    )
+  }
+
+  const Test = () => {
+    return (
+      <h1>hello this is test page</h1>
+    )
+  }
 
   return (
-    <div className="app">
-      <h1 className='shopName'>BelleMoi</h1>
-      <Directory categories={categories}/>
-    </div>
+    // wrap all the routes within Routes component
+    <Routes>
+      <Route path='/' element = {<Navbar></Navbar>}>
+        <Route index element={<Home></Home>} />
+        <Route path ='test' element={<Test></Test>}/>
+      </Route>
+    </Routes>
+
   );
 };
 
