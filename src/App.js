@@ -1,7 +1,8 @@
-import {Routes, Route, Outlet} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 import Home from './routes/home/home.component.jsx';
 import Navbar from './routes/navbar/navbar.component.jsx'
+import SignIn from './routes/sign-in/Sign-in.component.jsx'
 
 const App = () => {
   // An <Outlet> should be used in parent route elements to render
@@ -18,6 +19,7 @@ const App = () => {
       <Route path='/' element = {<Navbar></Navbar>}>
         <Route index element={<Home></Home>} />
         <Route path ='shop' element={<Test></Test>}/>
+        <Route path = 'sign-in' element={<SignIn></SignIn>}/>
       </Route>
     </Routes>
   );

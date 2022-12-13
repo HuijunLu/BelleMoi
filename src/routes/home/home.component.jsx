@@ -38,10 +38,8 @@ const Home = () => {
 
   return (
     <div className="app">
-      
-      {/* <Outlet /> */}
-      <h1 className='shopName'>BelleMoi</h1>
       <Directory categories={categories}/>
+      <Outlet  />
     </div>
   );
 };
