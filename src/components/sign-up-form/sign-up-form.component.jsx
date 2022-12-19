@@ -4,7 +4,11 @@ import {
   createUserDocumentFromAuth
 } from '../../utils/firebase/firebase.utils.js'
 
-const initialFormValues = {
+import FormInput from '../form-input/form-Input.component'
+import Button from '../button/button.component'
+import './sign-up-form.styles.scss'
+
+const defaultFormValues = {
   displayName: '',
   email: '',
   password:'',
@@ -13,11 +17,11 @@ const initialFormValues = {
 
 const SignUpForm = () => {
 
-  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formValues, setFormValues] = useState(defaultFormValues);
   const { displayName, email, password, confirmPassword} = formValues;
 
   const resetFormFields = () => {
-    setFormValues(initialFormValues);
+    setFormValues(defaultFormValues);
   }
 
   const handleChange = (e) => {
@@ -48,46 +52,46 @@ const SignUpForm = () => {
  }
 
   return (
-    <div>
-      <h1> I do not have a account</h1>
-      <p> Sign up with your email and password</p>
+    <div className='sign-up-container'>
+      <h2> Do not have a account?</h2>
+      <span> Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
-        <input
+        <FormInput
+        label='Display Name'
         type='text'
         required
         onChange={handleChange}
         name ='displayName'
         value ={displayName}
-        ></input>
+        ></FormInput>
 
-        <label>Email</label>
-        <input
+        <FormInput
+        label='Email'
         type='email'
         required
         onChange={handleChange}
         name ='email'
-        value ={email}></input>
+        value ={email}></FormInput>
 
-        <label>Password</label>
-        <input
+        <FormInput
+        label='Password'
         type='password'
         required
         onChange={handleChange}
         name ='password'
         value ={password}
         minLength = '6'
-        ></input>
+        ></FormInput>
 
-        <label>Confirm Password</label>
-        <input
+        <FormInput
+        label='Confirm Password'
         type='password'
         required
         onChange={handleChange}
         name ='confirmPassword'
-        value ={confirmPassword}></input>
+        value ={confirmPassword}></FormInput>
 
-        <button type='submit'>Sign Up</button>
+        <Button type='submit'>Sign Up</Button>
       </form>
 
     </div>
