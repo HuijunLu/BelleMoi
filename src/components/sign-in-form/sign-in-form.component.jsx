@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import FormInput from '../form-input/form-Input.component'
 import Button from '../button/button.component'
+// import the current value of userContext
+import { UserContext } from '../../contexts/user.context'
 import './sign-in-form.styles.scss'
 
 import {
@@ -20,6 +22,10 @@ const SignInForm = () => {
 
   const [formValues, setFormValues] = useState(defaultFormValues);
   const { email, password } = formValues;
+
+
+  //get the current UserContext value: we only need the setCurrentUser func iin sign in form
+  const { setCurrentUser } = useContext(UserContext)
 
   const resetFormFields = () => {
     setFormValues(defaultFormValues);
@@ -43,8 +49,8 @@ const SignInForm = () => {
     e.preventDefault()
 
     try {
-      const response = await signInUserWithEmailAndPassword(email, password)
-      console.log(response);
+      const { user } = await signInUserWithEmailAndPassword(email, password)
+      setCurrentUser(user)
       resetFormFields();
     } catch(error) {
       //switch statement
@@ -58,8 +64,8 @@ const SignInForm = () => {
         default:
           console.log('error in sign in with password and email', error)
       }
-
     }
+
   }
 
   return (
@@ -68,7 +74,7 @@ const SignInForm = () => {
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-        label='email'
+        label='Email'
         type='email'
         required
         onChange={handleChange}
@@ -76,7 +82,7 @@ const SignInForm = () => {
         value ={email}
         />
         <FormInput
-        label='password'
+        label='Password'
         type='password'
         required
         onChange={handleChange}

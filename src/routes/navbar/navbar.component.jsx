@@ -1,18 +1,29 @@
+import { useContext } from 'react'
 import { Outlet, Link } from "react-router-dom";
+
 import { ReactComponent as ShopLogo } from "../../assets/crown.svg";
+import { UserContext } from '../../contexts/user.context'
 
 import './navbar.styles.scss'
 
 const Navbar = () => {
+
+  const { currentUser } = useContext(UserContext)
+
   return (
     <>
       <div className="navigation">
         <Link className="logo-container" to="/">
           <ShopLogo className="logo" />
         </Link>
-        <Link className="shopName" to="/">
+        <div className='shopName-container'>
+           <Link className="shopName" to="/">
+              <h1>BelleMoi</h1>
+           </Link>
+        </div>
+        {/* <Link className="shopName" to="/">
           <h1>BelleMoi</h1>
-        </Link>
+        </Link> */}
 
         <div className="nav-links-container">
           <Link className="nav-link" to="/shop">
