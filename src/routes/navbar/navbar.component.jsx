@@ -1,14 +1,20 @@
-import { useContext } from 'react'
+import { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
 import { ReactComponent as ShopLogo } from "../../assets/crown.svg";
-import { UserContext } from '../../contexts/user.context'
+import { signOutUser } from '../../utils/firebase/firebase.utils.js'
+import { UserContext } from "../../contexts/user.context";
 
-import './navbar.styles.scss'
+import "./navbar.styles.scss";
 
 const Navbar = () => {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  const { currentUser } = useContext(UserContext)
+  const signOutUserHandler = async() => {
+    await signOutUser();
+    setCurrentUser(null)
+
+  }
 
   return (
     <>
@@ -16,10 +22,10 @@ const Navbar = () => {
         <Link className="logo-container" to="/">
           <ShopLogo className="logo" />
         </Link>
-        <div className='shopName-container'>
-           <Link className="shopName" to="/">
-              <h1>BelleMoi</h1>
-           </Link>
+        <div className="shopName-container">
+          <Link className="shopName" to="/">
+            <h1>BelleMoi</h1>
+          </Link>
         </div>
         {/* <Link className="shopName" to="/">
           <h1>BelleMoi</h1>
@@ -29,9 +35,16 @@ const Navbar = () => {
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
-          <Link className='nav-link' to='/auth'>
-            SIGN IN
-          </Link>
+          {/* render signout if user is logged in otherwise sign in link */}
+          {currentUser ? (
+            <Link className="nav-link" to="/auth" onClick= {signOutUserHandler }>
+              SIGN OUT
+            </Link>
+          ) : (
+            <Link className="nav-link" to="/auth">
+              SIGN IN
+            </Link>
+          )}
         </div>
       </div>
       <Outlet />
