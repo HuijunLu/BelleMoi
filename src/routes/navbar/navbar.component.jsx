@@ -10,12 +10,6 @@ import "./navbar.styles.scss";
 const Navbar = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  const signOutUserHandler = async() => {
-    await signOutUser();
-    setCurrentUser(null)
-
-  }
-
   return (
     <>
       <div className="navigation">
@@ -37,7 +31,7 @@ const Navbar = () => {
           </Link>
           {/* render signout if user is logged in otherwise sign in link */}
           {currentUser ? (
-            <Link className="nav-link" to="/auth" onClick= {signOutUserHandler }>
+            <Link className="nav-link" to="/auth" onClick= {signOutUser}>
               SIGN OUT
             </Link>
           ) : (

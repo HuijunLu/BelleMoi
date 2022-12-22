@@ -1,16 +1,16 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 
 import FormInput from '../form-input/form-Input.component'
 import Button from '../button/button.component'
-// import the current value of userContext
-import { UserContext } from '../../contexts/user.context'
-import './sign-in-form.styles.scss'
+// // import the current value of userContext
+// import { UserContext } from '../../contexts/user.context'
 
 import {
   signInWithGooglePopup,
   signInUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils.js'
+
+import './sign-in-form.styles.scss'
 
 
 const defaultFormValues = {
@@ -25,15 +25,14 @@ const SignInForm = () => {
 
 
   //get the current UserContext value: we only need the setCurrentUser func iin sign in form
-  const { setCurrentUser } = useContext(UserContext)
+  // const { setCurrentUser } = useContext(UserContext)
 
   const resetFormFields = () => {
     setFormValues(defaultFormValues);
   }
 
   const signInWithGoogle = async() => {
-    const response = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(response.user);
+    await signInWithGooglePopup();
     console.log('sign in successfully!')
     resetFormFields()
 
@@ -49,8 +48,7 @@ const SignInForm = () => {
     e.preventDefault()
 
     try {
-      const { user } = await signInUserWithEmailAndPassword(email, password)
-      setCurrentUser(user)
+      await signInUserWithEmailAndPassword(email, password)
       resetFormFields();
     } catch(error) {
       //switch statement

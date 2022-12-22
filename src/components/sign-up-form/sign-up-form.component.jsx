@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react';
+import {useState} from 'react';
 
 import FormInput from '../form-input/form-Input.component'
 import Button from '../button/button.component'
@@ -7,7 +7,6 @@ import {
   createAuthFromEmailAndPassword,
   createUserDocumentFromAuth
 } from '../../utils/firebase/firebase.utils.js'
-import { UserContext } from '../../contexts/user.context'
 
 import './sign-up-form.styles.scss'
 
@@ -24,7 +23,7 @@ const SignUpForm = () => {
   const { displayName, email, password, confirmPassword} = formValues;
 
   // hook up the userContext, and get the props needed from the userContext obj
-  const {setCurrentUser } = useContext(UserContext)
+  // const {setCurrentUser } = useContext(UserContext)
 
   const resetFormFields = () => {
     setFormValues(defaultFormValues);
@@ -47,7 +46,6 @@ const SignUpForm = () => {
     const { user } = await createAuthFromEmailAndPassword(email, password);
     // need to pass in display name since the response from google createAuth doesn't have it
     await createUserDocumentFromAuth(user, { displayName })
-    setCurrentUser(user)
     resetFormFields()
   }catch(error) {
     if(error.code === 'auth/email-already-in-use') {
