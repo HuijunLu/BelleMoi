@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Croissant Dôme Hoops",
+    "imageUrl": "https://static.mejuri.com/mejuri-com/image/fetch/c_scale,f_auto,q_60,w_1500/https://static.mejuri.com/legacy-front/production/system/spree/products/18383/original/0_CroissantDomeHoops_earring_v_hero_comp.jpg?1635171067",
+    "price": 78
+  },
+  {
+    "id": 2,
+    "name": "Single Mini Hoop",
+    "imageUrl": "https://static.mejuri.com/mejuri-com/image/fetch/c_scale,f_auto,q_60,w_1500/https://static.mejuri.com/legacy-front/production/system/spree/products/18051/original/SingleMiniHoop_Earrings_YG_Hero_2544.jpg?1605898879",
+    "price": 35
+  },
+  {
+    "id": 3,
+    "name": "Bold Pearl Drop Earrings",
+    "imageUrl": "https://static.mejuri.com/mejuri-com/image/fetch/c_scale,f_auto,q_60,w_1500/https://static.mejuri.com/legacy-front/production/system/spree/products/26590/original/0-Derisk_BoldPearlDropEarrings_V_FLATLAY_269.jpg?1666098964",
+    "price": 98
+  },
+  {
+    "id": 4,
+    "name": "Organic Pearl HoopsGrey Brim",
+    "imageUrl": "https://static.mejuri.com/mejuri-com/image/fetch/c_scale,f_auto,q_60,w_1500/https://static.mejuri.com/legacy-front/production/system/spree/products/17007/original/OrganicPearlHoops_earrings_v_hero_1240.jpg?1605794379",
+    "price": 25
+  },
+  {
+    "id": 5,
+    "name": "Thin Croissant Dôme Hoops",
+    "imageUrl": "https://static.mejuri.com/mejuri-com/image/fetch/c_scale,f_auto,q_60,w_1500/https://static.mejuri.com/legacy-front/production/system/spree/products/18853/original/CroissantEvolution_hoops_v_hero.jpg?1609769693",
+    "price": 78
+  }
+]
