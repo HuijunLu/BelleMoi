@@ -4,6 +4,7 @@ import Home from './routes/home/home.component.jsx';
 import Navbar from './routes/navbar/navbar.component.jsx'
 import Authentication from './routes/authentication/authentication.component.jsx'
 import Shop from './routes/shop/shop.component.jsx'
+import Checkout from './routes/checkout/checkout.component.jsx'
 
 const App = () => {
   // An <Outlet> should be used in parent route elements to render
@@ -16,6 +17,7 @@ const App = () => {
         <Route index element={<Home></Home>} />
         <Route path ='shop' element={<Shop></Shop>}/>
         <Route path = 'auth' element={<Authentication></Authentication>}/>
+        <Route path = 'checkout' element={<Checkout></Checkout>}/>
       </Route>
     </Routes>
   );
